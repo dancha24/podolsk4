@@ -389,6 +389,27 @@ document.querySelectorAll(".js-lead-form").forEach((form) => {
       await sendLeadToBitrix(form);
       reachUniversalFormGoal(form);
 
+      try {
+        var ct_site_id = 74136;
+        var ct_data = {
+            fio: form.querySelector('[name="name"]')?.value,
+            phoneNumber: phoneField?.value,
+            subject: 'Заявка с ' + location.hostname,
+            requestUrl: location.href,
+            sessionId: window.call_value
+        };
+        var post_data = Object.keys(ct_data).reduce(function (a, k) { if (!!ct_data[k]) { a.push(k + '=' + encodeURIComponent(ct_data[k])); } return a }, []).join('&');
+        var CT_URL = 'https://api.calltouch.ru/calls-service/RestAPI/requests/' + ct_site_id + '/register/';
+
+        console.log('Отправлено в Calltouch', ct_data);
+        window.ct_snd_flag = 1; setTimeout(function () { window.ct_snd_flag = 0; }, 15000);
+        var request = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+        request.open("POST", CT_URL, true); request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.send(post_data);  
+      } catch (error) {}
+
+
+
       if (success) {
         success.textContent = "Спасибо! Мы перезвоним в течение 15 минут.";
         success.style.color = "#27ae60";
