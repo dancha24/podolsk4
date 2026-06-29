@@ -176,7 +176,6 @@ iframe {
   line-height: 1.05;
 }
 
-.header__address,
 .header__worktime,
 .header__phone,
 .header__cta {
@@ -1121,11 +1120,10 @@ body.modal-open {
   }
 
   .header__top {
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
     gap: 10px 12px;
   }
 
-  .header__address,
   .header__worktime,
   .header__phone {
     display: block;
@@ -1135,15 +1133,10 @@ body.modal-open {
     display: inline-flex;
   }
 
-  .header__address,
   .header__worktime {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
-  }
-
-  .header__address {
-    white-space: nowrap;
     margin-right: auto;
   }
 
@@ -1250,12 +1243,6 @@ body.modal-open {
 
   .logo__text {
     font-size: 1.15rem;
-  }
-
-  .header__address {
-    max-width: 220px;
-    font-size: 0.84rem;
-    line-height: 1.2;
   }
 
   .header__worktime,
